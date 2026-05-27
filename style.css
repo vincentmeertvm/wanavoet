@@ -1,0 +1,276 @@
+/* Basisinstellingen */
+body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.8; background-color: #ffffff; }
+
+/* Top logo aangepast naar serif stijl conform screenshot */
+header { text-align: center; padding: 60px 0 30px 0; }
+.top-logo { 
+    font-family: 'Cormorant Garamond', Georgia, serif; 
+    font-size: 54px;            
+    color: #e39c8e;             
+    letter-spacing: 0px; 
+    font-weight: 300; 
+    font-style: italic;         
+}
+
+/* Main Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+/* Grote layout-wrapper met extra witruimte onderaan */
+.layout-wrapper { display: flex; align-items: start; gap: 80px; padding: 60px 0 100px 0; }
+.text-side { flex: 1.2; }
+.image-side { flex: 1; text-align: center; }
+.image-side img { max-width: 100%; height: auto; }
+
+/* Typografie conform originele site */
+h1 { font-size: 3.8em; margin: 0 0 30px 0; font-weight: 300; line-height: 1.1; letter-spacing: -1px; }
+h1 span { font-size: 0.55em; color: #666; display: block; margin-top: 15px; font-weight: 300; letter-spacing: 0px; }
+h2 { font-size: 1.8em; font-weight: 300; padding-bottom: 15px; margin-top: 0; margin-bottom: 40px; letter-spacing: 1px; }
+
+/* Blokken met extra marges */
+.contact-block { margin: 50px 0; font-size: 1.1em; }
+.contact-block p { margin: 8px 0; }
+.contact-block .afspraak { margin-top: 30px; color: #666; }
+
+.about-block { margin-top: 60px; max-width: 500px; }
+.about-block p { color: #555; }
+
+/* Extra witruimte tussen de grote secties */
+.section-spacing { padding: 100px 0; border-top: 1px solid #f0f0f0; }
+
+/* Strakker grid voor de beelden (zonder "Impressie" tekst) */
+.photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.photo-grid img { width: 100%; height: 320px; object-fit: cover; transition: opacity 0.3s ease; }
+.photo-grid img:hover { opacity: 0.9; }
+
+/* Inklapbare behandelingen (Accordion) */
+.behandelingen-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.behandeling-item {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px 0;
+    transition: background-color 0.2s ease;
+}
+
+.behandeling-item:last-child {
+    border-bottom: none;
+}
+
+/* Klikbare balk */
+.behandeling-item summary {
+    list-style: none; /* Verwijdert standaard pijltje */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+/* Verwijdert standaard pijltje in Safari */
+.behandeling-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.behandeling-item h3 {
+    font-size: 1.4em;
+    font-weight: 300;
+    margin: 0;
+    color: #111;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+/* Custom indicator (pijltje) aan de rechterkant */
+.behandeling-item summary::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    margin-right: 10px;
+}
+
+/* Hover effecten */
+.behandeling-item summary:hover h3 {
+    color: #e39c8e;
+}
+.behandeling-item summary:hover::after {
+    border-color: #e39c8e;
+}
+
+/* Rotatie van het pijltje als het item openstaat */
+.behandeling-item[open] summary::after {
+    transform: rotate(-135deg);
+}
+
+/* Gedeelte met de eigenlijke tekst (verbergt/toont automatisch) */
+.behandeling-content {
+    padding: 20px 0 10px 0;
+    animation: slideDown 0.3s ease-out;
+}
+
+.behandeling-item p {
+    color: #444;
+    margin: 0 0 15px 0;
+    max-width: 800px;
+}
+
+.behandeling-item .intro-text {
+    font-style: italic;
+    color: #666;
+}
+
+/* Bullet-points binnen behandelingen */
+.behandeling-item ul {
+    margin: 0 0 20px 0;
+    padding-left: 20px;
+    color: #555;
+}
+
+.behandeling-item ul li {
+    margin-bottom: 6px;
+}
+
+.behandeling-extra {
+    font-size: 0.95em;
+    color: #666 !important;
+    background-color: #f9f9f9;
+    padding: 10px 15px;
+    border-left: 2px solid #e39c8e;
+    display: inline-block;
+}
+
+/* Prijs en Duurtijd aanduiding */
+.behandeling-meta {
+    margin-top: 20px;
+    display: flex;
+    gap: 25px;
+    font-size: 1.05em;
+}
+
+.behandeling-meta .prijs {
+    font-weight: bold;
+    color: #111;
+}
+
+.behandeling-meta .duurtijd {
+    color: #777;
+}
+
+/* Vloeiende animatie bij openen */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobiele weergave optimalisatie */
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .layout-wrapper { flex-direction: column-reverse; gap: 40px; padding: 30px 0 60px 0; }
+    h1 { font-size: 2.6em; text-align: center; }
+    .top-logo { font-size: 42px; } 
+    .text-side { text-align: center; }
+    .contact-block { margin: 30px 0; }
+    .about-block { margin: 40px auto 0 auto; text-align: center; }
+    .section-spacing { padding: 60px 0; }
+    .photo-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+    .photo-grid img { height: 220px; }
+    
+    /* Mobiele aanpassingen accordion */
+    .behandeling-item summary { padding: 15px 0; }
+    .behandeling-item h3 { font-size: 1.2em; text-align: left; }
+    .behandeling-content { text-align: left; }
+    .behandeling-item ul { display: block; text-align: left; }
+    .behandeling-meta { justify-content: flex-start; }
+}
+
+/* ==========================================================================
+   Footer Section
+   ========================================================================== */
+
+.site-footer {
+    background-color: #fcf4ee; 
+    padding: 40px 0;
+    width: 100%;
+    margin-top: 60px;
+    box-sizing: border-box;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1100px;         
+    margin: 0 auto;
+    padding: 0 40px;            
+    box-sizing: border-box;
+}
+
+.footer-left p {
+    margin: 0;
+    color: #111111;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-right {
+    display: flex;
+    align-items: flex-start;
+}
+
+.footer-link {
+    color: #111111;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #555555;
+}
+
+/* Mobiele footer aanpassingen */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column-reverse;
+        gap: 20px;
+        padding: 0 20px;       
+        align-items: flex-start;
+    }
+}
+
+/* ==========================================================================
+   Aanvullende styling voor de Voorwaarden pagina
+   ========================================================================== */
+
+/* Zorgt ervoor dat de logo-link bovenin geen standaard linkkleuren krijgt */
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Specifieke styling voor de tekstpagina container */
+.legal-container {
+    max-width: 800px; /* Iets smaller voor optimale leesbaarheid van lange teksten */
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+.legal-container h1 {
+    font-size: 2.8em;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* "Terug naar home" knopje */
+.back-link {
+    display: inline-block;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95em;
+    margin-
